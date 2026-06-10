@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TecnoMedia Studio - Dossier TDR Telecomunicaciones Educativas II</title>
+  
+  <!-- Fuentes e Iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Variables de Diseño - Paleta Cyber-Professional */
+    :root {
+      --bg-deep: #0a0b0e;
+      --bg-surface: #111319;
+      --bg-card: #171a23;
+      --bg-card-hover: #1e2230;
+      
+      --accent-neon: #00ff88;
+      --accent-cyan: #00bfff;
+      --accent-purple: #8b5cf6;
+      --accent-youtube: #ff4a4a;
+      
+      --accent-neon-glow: rgba(0, 255, 136, 0.2);
+      --accent-cyan-glow: rgba(0, 191, 255, 0.2);
+      
+      --text-white: #ffffff;
+      --text-primary: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dark: #6b7280;
+      
+      --sidebar-width: 280px;
+      --header-height: 70px;
+      
+      --glass-bg: rgba(23, 26, 35, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.05);
+      --glass-blur: blur(12px);
+      
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Reset General */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-neon) var(--bg-surface);
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Scrollbars Modernos */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-deep);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-card);
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-neon);
+      box-shadow: 0 0 10px var(--accent-neon);
+    }
+
+    /* Contenedor Principal (Dashboard Layout) */
+    .app-container {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Navegación Lateral (Sidebar) */
+    aside.sidebar {
+      width: var(--sidebar-width);
+      background: var(--bg-surface);
+      border-right: 1px solid var(--glass-border);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+    }
+
+    .brand {
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent-neon), var(--accent-cyan));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bg-deep);
+      font-size: 1.25rem;
+      font-weight: 800;
+      box-shadow: 0 0 15px var(--accent-neon-glow);
+    }
+
+    .brand-info h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-white);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-info span {
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 20px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-grow: 1;
+    }
+
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+
+    .nav-item a i {
+      font-size: 1.1rem;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-item a:hover {
+      color: var(--text-white);
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-item.active a {
+      color: var(--bg-deep);
+      background: linear-gradient(90deg, var(--accent-neon), var(--accent-cyan));
+      font-weight: 600;
+      box-shadow: 0 4px 15px var(--accent-neon-glow);
+    }
+
+    .nav-item.active a i {
+      color: var(--bg-deep);
+    }
+
+    .sidebar-footer {
+      padding: 20px;
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .footer-meta {
+      font-size: 0.75rem;
+      color: var(--text-dark);
+      text-align: center;
+    }
+
+    .footer-meta p {
+      margin-bottom: 4px;
+    }
+
+    /* Contenido Principal */
+    main.main-content {
+      margin-left: var(--sidebar-width);
+      flex-grow: 1;
+      padding: 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    /* Botón Hamburguesa de Móvil */
+    .mobile-toggle {
+      display: none;
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 45px;
+      height: 45px;
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      align-items: center;
+      justify-content: center;
+      z-index: 101;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Secciones Base */
+    .dossier-section {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .dossier-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Encabezados de Sección */
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      color: var(--accent-neon);
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.2;
+    }
+
+    .section-title span {
+      background: linear-gradient(90deg, var(--accent-neon), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-description {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 1.1rem;
+      max-width: 800px;
+    }
+
+    /* --- ESTILOS DE SECCIÓN: PORTADA --- */
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      min-height: calc(100vh - 120px);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+    }
+
+    .hero-tag span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-white);
+    }
+
+    .hero-tag .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-neon);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-neon);
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-white);
+      letter-spacing: -1.5px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent-neon) 0%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-left: 3px solid var(--accent-cyan);
+      padding-left: 16px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-neon), var(--accent-cyan));
+      color: var(--bg-deep);
+      border: none;
+      box-shadow: 0 4px 20px var(--accent-neon-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 255, 136, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-white);
+      border: 1px solid var(--glass-border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--text-muted);
+      transform: translateY(-2px);
+    }
+
+    .btn-youtube {
+      background: rgba(255, 74, 74, 0.06);
+      color: var(--accent-youtube);
+      border: 1px solid rgba(255, 74, 74, 0.25);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-youtube:hover {
+      background: rgba(255, 74, 74, 0.15);
+      border-color: var(--accent-youtube);
+      box-shadow: 0 4px 15px rgba(255, 74, 74, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Tarjeta de Consultores */
+    .team-box {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .team-box::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, var(--accent-cyan-glow) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .team-box-header {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 16px;
+    }
+
+    .team-box-header h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      color: var(--text-white);
+    }
+
+    .team-box-header span {
+      font-size: 0.8rem;
+      color: var(--accent-neon);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .team-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-member {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .member-avatar {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+      font-size: 1.1rem;
+    }
+
+    .member-info h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-white);
+    }
+
+    .member-info p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* --- ESTILOS DE SECCIÓN: CARTA DE PRESENTACIÓN --- */
+    .letter-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 40px;
+    }
+
+    .letter-paper {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .letter-meta-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .letter-meta-header span strong {
+      color: var(--accent-neon);
+    }
+
+    .letter-body {
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 1.05rem;
+    }
+
+    .letter-body p strong {
+      color: var(--accent-cyan);
+    }
+
+    .letter-signature {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .letter-signature h5 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-white);
+    }
+
+    .letter-signature p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .pitch-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: linear-gradient(145deg, var(--bg-card), rgba(23, 26, 35, 0.3));
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: var(--transition-smooth);
+    }
+
+    .stat-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-3px);
+    }
+
+    .stat-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: rgba(0, 191, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+      font-size: 1.8rem;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* --- ESTILOS DE SECCIÓN: MARCO TDR y JUSTIFICACIÓN --- */
+    .tdr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .tdr-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 30px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tdr-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .tdr-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 191, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .tdr-card:hover::after {
+      opacity: 1;
+    }
+
+    .tdr-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--accent-neon);
+      margin-bottom: 20px;
+      transition: var(--transition-smooth);
+    }
+
+    .tdr-card:hover .tdr-icon {
+      background: var(--accent-neon);
+      color: var(--bg-deep);
+      box-shadow: 0 0 15px var(--accent-neon-glow);
+    }
+
+    .tdr-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      color: var(--text-white);
+      margin-bottom: 12px;
+    }
+
+    .tdr-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Bloque Académico */
+    .academic-callout {
+      background: linear-gradient(90deg, rgba(0, 255, 136, 0.03) 0%, rgba(0, 191, 255, 0.03) 100%);
+      border: 1px solid var(--glass-border);
+      border-left: 4px solid var(--accent-neon);
+      border-radius: 12px;
+      padding: 30px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .callout-icon {
+      font-size: 2rem;
+      color: var(--accent-neon);
+    }
+
+    .callout-text h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+
+    .callout-text p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* --- ESTILOS DE SECCIÓN: METODOLOGÍA --- */
+    .method-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    .method-step {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .method-step:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 10px 30px rgba(0, 191, 255, 0.1);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -15px;
+      left: 30px;
+      background: linear-gradient(135deg, var(--accent-neon), var(--accent-cyan));
+      color: var(--bg-deep);
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px var(--accent-neon-glow);
+    }
+
+    .step-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      color: var(--text-white);
+      margin-top: 10px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-title i {
+      color: var(--accent-cyan);
+    }
+
+    .step-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step-details li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .step-details li i {
+      color: var(--accent-neon);
+      margin-top: 4px;
+    }
+
+    /* --- ESTILOS DE SECCIÓN: VIDEOTECA INTERACTIVA --- */
+    /* Teatro del Video (Reproductor Destacado) */
+    .video-theater {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+
+    .theater-container {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 24px;
+    }
+
+    .theater-screen-wrapper {
+      position: relative;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Proporción 16:9 Estricta */
+    .responsive-video {
+      position: relative;
+      padding-bottom: 56.25%; /* Relación 16:9 */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .responsive-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .theater-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .theater-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(0, 191, 255, 0.1);
+      color: var(--accent-cyan);
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      width: fit-content;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .theater-badge .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-cyan);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+
+    .theater-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .theater-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .theater-actions {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .theater-actions .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .theater-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .meta-tag {
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta-tag i {
+      color: var(--accent-neon);
+    }
+
+    /* Grid de Videos de la Videoteca */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .video-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px dashed transparent;
+      border-radius: 16px;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+
+    .video-card.active-card {
+      border-color: var(--accent-neon);
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.15);
+    }
+
+    .card-thumbnail-fallback {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #1f2937, #111827);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Para que sea interactivo con hover animado */
+    .card-thumbnail-fallback img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      transition: var(--transition-smooth);
+    }
+
+    .video-card:hover .card-thumbnail-fallback img {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(13, 14, 18, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .play-btn-circle {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-neon);
+      color: var(--bg-deep);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: var(--transition-smooth);
+      box-shadow: 0 0 20px var(--accent-neon-glow);
+    }
+
+    .video-card:hover .play-btn-circle {
+      transform: scale(1.1);
+      background: var(--text-white);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    }
+
+    .card-info {
+      padding: 16px;
+    }
+
+    .card-unit {
+      font-size: 0.75rem;
+      color: var(--accent-neon);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-white);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 40px;
+    }
+
+    /* --- RESPONSIVIDAD (MOBILE-FIRST) --- */
+    @media (max-width: 1200px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        min-height: auto;
+        padding-top: 40px;
+      }
+      
+      .letter-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tdr-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .method-timeline {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .theater-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      aside.sidebar {
+        transform: translateX(-100%);
+      }
+
+      aside.sidebar.mobile-active {
+        transform: translateX(0);
+      }
+
+      main.main-content {
+        margin-left: 0;
+        padding: 80px 20px 20px 20px;
+      }
+
+      .mobile-toggle {
+        display: flex;
+      }
+
+      .hero-title {
+        font-size: 2.8rem;
+      }
+
+      .tdr-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .academic-callout {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toggle Móvil -->
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu principal">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <div class="app-container">
+    
+    <!-- Sidebar / Menú Lateral -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="brand">
+          <div class="brand-logo">
+            <i class="fa-solid fa-play"></i>
+          </div>
+          <div class="brand-info">
+            <h1>TecnoMedia</h1>
+            <span>Studio</span>
+          </div>
+        </div>
+
+        <ul class="nav-links">
+          <li class="nav-item active" data-tab="portada">
+            <a href="#portada">
+              <i class="fa-solid fa-house-laptop"></i>
+              <span>Portada Corporativa</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="presentacion">
+            <a href="#presentacion">
+              <i class="fa-solid fa-envelope-open-text"></i>
+              <span>Carta Comercial</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tdr">
+            <a href="#tdr">
+              <i class="fa-solid fa-award"></i>
+              <span>Marco TDR</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="metodologia">
+            <a href="#metodologia">
+              <i class="fa-solid fa-gears"></i>
+              <span>Metodología</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="videoteca">
+            <a href="#videoteca">
+              <i class="fa-solid fa-photo-film"></i>
+              <span>Videoteca TDR</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="footer-meta">
+          <p>Telecomunicaciones Educativas II</p>
+          <p>© 2026 TecnoMedia Studio</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Área de Contenido Principal -->
+    <main class="main-content">
+      
+      <!-- SECCIÓN 1: PORTADA -->
+      <section id="portada" class="dossier-section active">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-tag">
+              <span class="dot"></span>
+              <span>Propuesta Tecnopedagógica Homologada</span>
+            </div>
+            <h2 class="hero-title">
+              Virtualización de Contenidos <span>Premium</span>
+            </h2>
+            <p class="hero-subtitle">
+              Propuesta de Servicios Audiovisuales bajo TDR para la asignatura de <strong>Telecomunicaciones Educativas II</strong>. Diseñada para transformar el currículo formal en experiencias de microaprendizaje audiovisual de alto impacto.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#presentacion" class="btn btn-primary" onclick="switchSection('presentacion'); return false;">
+                <i class="fa-solid fa-chevron-right"></i> Explorar Dossier
+              </a>
+              <a href="#videoteca" class="btn btn-secondary" onclick="switchSection('videoteca'); return false;">
+                <i class="fa-solid fa-circle-play"></i> Ver Videoteca
+              </a>
+            </div>
+          </div>
+
+          <!-- Tarjeta del Equipo Consultor -->
+          <div class="team-box">
+            <div class="team-box-header">
+              <span>TecnoMedia Studio</span>
+              <h3>Consultoría Técnica</h3>
+            </div>
+            <div class="team-list">
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fa-solid fa-scissors"></i>
+                </div>
+                <div class="member-info">
+                  <h4>Diego Alexander Orellana Cortez</h4>
+                  <p>Edición y Postproducción de Video</p>
+                </div>
+              </div>
+              
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fa-solid fa-microphone-lines"></i>
+                </div>
+                <div class="member-info">
+                  <h4>Rodrigo Enrique Arevalo Ruiz</h4>
+                  <p>Presentador y Locución Profesional</p>
+                </div>
+              </div>
+
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fa-solid fa-pen-nib"></i>
+                </div>
+                <div class="member-info">
+                  <h4>Gabriela Guadalupe Hernandez Mejia</h4>
+                  <p>Diseño Instruccional y Guionismo</p>
+                </div>
+              </div>
+
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fa-solid fa-cubes"></i>
+                </div>
+                <div class="member-info">
+                  <h4>Erick Alexis Martinez</h4>
+                  <p>Diseño de Motion Graphics y Arte</p>
+                </div>
+              </div>
+
+              <div class="team-member">
+                <div class="member-avatar">
+                  <i class="fa-solid fa-photo-film"></i>
+                </div>
+                <div class="member-info">
+                  <h4>Isaac Eliseo Santos Molina</h4>
+                  <p>Presentador y Dirección de Cámaras</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: CARTA DE PRESENTACIÓN -->
+      <section id="presentacion" class="dossier-section">
+        <div class="section-header">
+          <span class="section-badge">Propuesta Comercial</span>
+          <h2 class="section-title">Carta de <span>Presentación</span></h2>
+          <p class="section-description">La alianza estratégica entre rigor instruccional y dinamismo audiovisual.</p>
+        </div>
+
+        <div class="letter-grid">
+          <div class="letter-paper">
+            <div class="letter-meta-header">
+              <span>Para: <strong>Instituciones Académicas de Vanguardia</strong></span>
+              <span>Emisión: San Salvador, El Salvador</span>
+            </div>
+            <div class="letter-body">
+              <p>Estimados directivos y académicos de la institución,</p>
+              <p>En la era de la saturación informativa y los lapsos de atención selectiva, la educación superior se enfrenta a su mayor reto histórico: <strong>lograr un engagement real y significativo en los estudiantes</strong>. Tradicionalmente, la digitalización de la educación se ha confundido con el simple volcado de PDFs o grabaciones de clases magistrales monótonas de 2 horas. En <strong>TecnoMedia Studio</strong>, entendemos que la virtualización educativa requiere un tratamiento de comunicación completamente diferencial.</p>
+              <p>Tenemos el agrado de presentar este <strong>Dossier Tecnopedagógico</strong> que recopila nuestra línea de producción de videos de 15 minutos, optimizados de forma nativa para plataformas hiper-accesibles como YouTube. No se trata simplemente de colocar una cámara; se trata de una traducción integral de las 6 unidades curriculares fundamentales de la materia <em>Telecomunicaciones Educativas II</em>.</p>
+              <p>Nuestra propuesta destaca por integrar de manera sinérgica la <strong>estética cinematográfica, el diseño de interfaces moderno y el diseño instruccional preciso</strong>. De este modo, convertimos conceptos densos (como el contexto sociocultural de la información o la soberanía tecnológica en telecomunicaciones) en piezas dinámicas enriquecidas, que fomentan el aprendizaje autónomo e interactivo.</p>
+              <p>Estamos convencidos de que este proyecto es el estándar de oro que su organización necesita para proyectarse como líder de la educación digital.</p>
+            </div>
+            <div class="letter-signature">
+              <h5>El Equipo Directivo</h5>
+              <p>Consorcio TecnoMedia Studio S.A. de C.V.</p>
+            </div>
+          </div>
+
+          <!-- Lateral de Atractivos Comerciales / KPI -->
+          <div class="pitch-sidebar">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fa-solid fa-stopwatch"></i>
+              </div>
+              <div>
+                <div class="stat-number">15 min</div>
+                <div class="stat-label">Rango óptimo de retención cognitiva por video</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon" style="color: var(--accent-neon); background: rgba(0,255,136,0.1);">
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+              <div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Compatibilidad móvil y accesibilidad mundial sin límites de servidor</div>
+              </div>
+            </div>
+
+            <div class="stat-card" style="border-color: rgba(139, 92, 246, 0.2);">
+              <div class="stat-icon" style="color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div>
+                <div class="stat-number">6 Unid.</div>
+                <div class="stat-label">Ejes curriculares clave totalmente cubiertos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: MARCO TDR Y JUSTIFICACIÓN PEDAGÓGICA -->
+      <section id="tdr" class="dossier-section">
+        <div class="section-header">
+          <span class="section-badge">Fundamentación Teórica</span>
+          <h2 class="section-title">Marco TDR y <span>Justificación</span></h2>
+          <p class="section-description">Alineación conceptual con las exigencias del pliego técnico para el desarrollo educativo sostenible.</p>
+        </div>
+
+        <div class="tdr-grid">
+          <div class="tdr-card">
+            <div class="tdr-icon">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3>Desarrollo de Competencias</h3>
+            <p>El diseño de nuestras piezas audiovisuales activa habilidades de alto nivel cognitivo: análisis, síntesis de la información y aplicación práctica en entornos reales. El video actúa como un andamiaje instruccional interactivo.</p>
+          </div>
+
+          <div class="tdr-card">
+            <div class="tdr-icon" style="color: var(--accent-cyan);">
+              <i class="fa-solid fa-users-gear"></i>
+            </div>
+            <h3>Sociedad del Conocimiento</h3>
+            <p>La sociedad contemporánea exige modelos flexibles de autoaprendizaje. Nuestros recursos democratizan la información técnica, haciéndola digerible, compartible y socialmente significativa para comunidades de aprendizaje virtual.</p>
+          </div>
+
+          <div class="tdr-card">
+            <div class="tdr-icon" style="color: var(--accent-purple);">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3>Reducción de Brecha Digital</h3>
+            <p>El uso de la infraestructura tecnológica de YouTube asegura que estudiantes con conectividades limitadas puedan acceder a contenidos optimizados, consumiendo un mínimo de datos de red y permitiendo su reproducción off-line.</p>
+          </div>
+        </div>
+
+        <div class="academic-callout">
+          <div class="callout-icon">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="callout-text">
+            <h4>¿Por qué 15 minutos en YouTube como estándar pedagógico?</h4>
+            <p>Investigaciones contemporáneas en neuroeducación evidencian que el umbral de atención sostenida en plataformas virtuales tiene un declive drástico pasados los 15-18 minutos. Condensar las unidades curriculares bajo este estándar nos obliga a eliminar la paja teórica e ir directamente a los conceptos centrales de la telecomunicación educativa. YouTube se elige como la infraestructura de distribución idónea porque ofrece transcoding inteligente automático, adaptando la resolución dinámicamente y garantizando una experiencia de aprendizaje libre de fricción técnica.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: METODOLOGÍA DE PRODUCCIÓN -->
+      <section id="metodologia" class="dossier-section">
+        <div class="section-header">
+          <span class="section-badge">Proceso de Trabajo</span>
+          <h2 class="section-title">Metodología de <span>Producción</span></h2>
+          <p class="section-description">El camino estructurado para garantizar consistencia técnica y académica.</p>
+        </div>
+
+        <div class="method-timeline">
+          <!-- Paso 1 -->
+          <div class="method-step">
+            <div class="step-number">Fase 01</div>
+            <h3 class="step-title">
+              <i class="fa-solid fa-pen-fancy"></i> Preproducción
+            </h3>
+            <ul class="step-details">
+              <li>
+                <i class="fa-solid fa-circle-play"></i>
+                <span><strong>Desglose Instruccional:</strong> Transformación del programa curricular analítico en un guion pedagógico con estructura narrativa de tres actos.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-play"></i>
+                <span><strong>Guion Literario e Ilustrado:</strong> Sincronización entre lo que el locutor/presentador dirá y los gráficos o animaciones que aparecerán en pantalla.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="method-step">
+            <div class="step-number">Fase 02</div>
+            <h3 class="step-title">
+              <i class="fa-solid fa-video"></i> Producción
+            </h3>
+            <ul class="step-details">
+              <li>
+                <i class="fa-solid fa-circle-play"></i>
+                <span><strong>Captura de Audio Hi-Fi:</strong> El audio es el 50% de la experiencia de aprendizaje. Usamos micrófonos de condensador profesionales para una locución nítida.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-play"></i>
+                <span><strong>Rodaje en Set Controlado:</strong> Grabación de los presentadores en estudio, optimizando iluminación (esquema de 3 puntos) y teleprompters para un performance natural.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="method-step">
+            <div class="step-number">Fase 03</div>
+            <h3 class="step-title">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Postproducción
+            </h3>
+            <ul class="step-details">
+              <li>
+                <i class="fa-solid fa-circle-play"></i>
+                <span><strong>Edición No Lineal y Grafismo:</strong> Inserción de rótulos explicativos, esquemas visuales animados y transiciones sutiles para reforzar los conceptos complejos.</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-play"></i>
+                <span><strong>Estrategia SEO en YouTube:</strong> Redacción de metadatos precisos, capítulos temporales interactivos, subtítulos y miniaturas atractivas (thumbnails) que invitan al clic.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 5: MATRIZ DE CONTENIDOS Y VIDEOTECA INTERACTIVA -->
+      <section id="videoteca" class="dossier-section">
+        <div class="section-header">
+          <span class="section-badge">Entregables Oficiales</span>
+          <h2 class="section-title">Matriz de Contenidos & <span>Videoteca</span></h2>
+          <p class="section-description">Acceda y reproduzca de manera directa las 6 unidades de la asignatura sin salir de la plataforma corporativa.</p>
+        </div>
+
+        <!-- Reproductor de Cine Destacado -->
+        <div class="video-theater">
+          <div class="theater-container">
+            <!-- Screen -->
+            <div class="theater-screen-wrapper">
+              <div class="responsive-video" id="theaterPlayer">
+                <!-- Se inyecta dinámicamente con JS (con dominio youtube-nocookie para prevenir error 153) -->
+                <iframe src="https://www.youtube-nocookie.com/embed/a0jsWAZYbvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </div>
+            <!-- Info Sidebar -->
+            <div class="theater-details">
+              <div>
+                <div class="theater-badge">
+                  <span class="pulse-dot"></span>
+                  <span id="theaterUnit">Unidad 1</span>
+                </div>
+                <h3 class="theater-title" id="theaterTitle">Contexto Histórico e Influencia de la Información en la Cultura</h3>
+                <p class="theater-text" id="theaterDesc">Análisis profundo sobre el surgimiento de las sociedades de la información, el tránsito de la cultura Gutenberg a la era del silicio, y cómo las telecomunicaciones alteran la cosmovisión y el comportamiento social contemporáneo.</p>
+              </div>
+
+              <!-- Enlace alternativo de Escape por si el entorno bloquea iFrames de YouTube -->
+              <div class="theater-actions">
+                <a id="theaterExternalLink" href="https://www.youtube.com/watch?v=a0jsWAZYbvc" target="_blank" class="btn btn-youtube">
+                  <i class="fa-brands fa-youtube"></i> Ver directamente en YouTube
+                </a>
+              </div>
+              
+              <div class="theater-meta">
+                <div class="meta-tag">
+                  <i class="fa-solid fa-user-graduate"></i>
+                  <span>Nivel: Postgrado / Profesional</span>
+                </div>
+                <div class="meta-tag">
+                  <i class="fa-regular fa-clock"></i>
+                  <span>Aprox: 15 min</span>
+                </div>
+                <div class="meta-tag">
+                  <i class="fa-solid fa-film"></i>
+                  <span>Resolución: Full HD</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rejilla de videos alternativos -->
+        <div class="video-grid">
+          <!-- Card 1 -->
+          <div class="video-card active-card" onclick="loadVideo(1, this)">
+            <div class="card-thumbnail-fallback">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Unidad 1 Background">
+              <div class="play-overlay">
+                <div class="play-btn-circle"><i class="fa-solid fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="card-unit">Unidad 01</p>
+              <h4 class="card-title">Contexto Histórico e Influencia de la Información en la Cultura</h4>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="video-card" onclick="loadVideo(2, this)">
+            <div class="card-thumbnail-fallback">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop" alt="Unidad 2 Background">
+              <div class="play-overlay">
+                <div class="play-btn-circle"><i class="fa-solid fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="card-unit">Unidad 02</p>
+              <h4 class="card-title">Medios de Comunicación en los Procesos de Enseñanza y Aprendizaje</h4>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="video-card" onclick="loadVideo(3, this)">
+            <div class="card-thumbnail-fallback">
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt="Unidad 3 Background">
+              <div class="play-overlay">
+                <div class="play-btn-circle"><i class="fa-solid fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="card-unit">Unidad 03</p>
+              <h4 class="card-title">Telecomunicaciones y Desarrollo de Competencias en el Aprendizaje</h4>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="video-card" onclick="loadVideo(4, this)">
+            <div class="card-thumbnail-fallback">
+              <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=600&auto=format&fit=crop" alt="Unidad 4 Background">
+              <div class="play-overlay">
+                <div class="play-btn-circle"><i class="fa-solid fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="card-unit">Unidad 04</p>
+              <h4 class="card-title">Posibilidades Educativas de la Videoconferencia en la Ed. a Distancia</h4>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="video-card" onclick="loadVideo(5, this)">
+            <div class="card-thumbnail-fallback">
+              <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=600&auto=format&fit=crop" alt="Unidad 5 Background">
+              <div class="play-overlay">
+                <div class="play-btn-circle"><i class="fa-solid fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="card-unit">Unidad 05</p>
+              <h4 class="card-title">La integración de los Medios de Comunicación en el Proceso de Aprendizaje</h4>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="video-card" onclick="loadVideo(6, this)">
+            <div class="card-thumbnail-fallback">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=600&auto=format&fit=crop" alt="Unidad 6 Background">
+              <div class="play-overlay">
+                <div class="play-btn-circle"><i class="fa-solid fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="card-unit">Unidad 06</p>
+              <h4 class="card-title">Construcción Autónoma del Conocimiento y Seguridad de la Información</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- LÓGICA DE CONTROL INTERACTIVO (SPA & PLAYER) -->
+  <script>
+    // Datos y metadatos reales de los 6 videos oficiales usando el dominio seguro youtube-nocookie
+    const videosData = {
+      1: {
+        unit: "Unidad 1",
+        title: "Contexto Histórico e Influencia de la Información en la Cultura",
+        embedUrl: "https://www.youtube-nocookie.com/embed/a0jsWAZYbvc",
+        externalUrl: "https://www.youtube.com/watch?v=a0jsWAZYbvc",
+        desc: "Análisis profundo sobre el surgimiento de las sociedades de la información, el tránsito de la cultura Gutenberg a la era del silicio, y cómo las telecomunicaciones alteran la cosmovisión y el comportamiento social contemporáneo."
+      },
+      2: {
+        unit: "Unidad 2",
+        title: "Medios de Comunicación en los Procesos de Enseñanza y Aprendizaje",
+        embedUrl: "https://www.youtube-nocookie.com/embed/ymIX_fdUoQI",
+        externalUrl: "https://www.youtube.com/watch?v=ymIX_fdUoQI",
+        desc: "Exploración exhaustiva de los medios tradicionales y digitales integrados como agentes activos del diseño instruccional, maximizando canales visuales, auditivos y kinestésicos en el estudiante."
+      },
+      3: {
+        unit: "Unidad 3",
+        title: "Las Telecomunicaciones y el Desarrollo de Competencias en el Aprendizaje",
+        embedUrl: "https://www.youtube-nocookie.com/embed/lHjlWd0mVFE",
+        externalUrl: "https://www.youtube.com/watch?v=lHjlWd0mVFE",
+        desc: "Análisis del rol habilitador de las redes de datos de alta velocidad en la educación técnica, impulsando el desarrollo de competencias prácticas, colaborativas y de resolución de problemas en tiempo real."
+      },
+      4: {
+        unit: "Unidad 4",
+        title: "Posibilidades Educativas de la Videoconferencia en la Educación a Distancia",
+        embedUrl: "https://www.youtube-nocookie.com/embed/64Hu5qtsWNw",
+        externalUrl: "https://www.youtube.com/watch?v=64Hu5qtsWNw",
+        desc: "Deconstrucción metodológica del fenómeno síncrono. Cómo planificar videoconferencias de alto impacto para evitar el cansancio cognitivo y propiciar dinámicas interactivas bidireccionales."
+      },
+      5: {
+        unit: "Unidad 5",
+        title: "La integración de los Medios de Comunicación en el Proceso de Aprendizaje",
+        embedUrl: "https://www.youtube-nocookie.com/embed/Gte3Z-GkC8s",
+        externalUrl: "https://www.youtube.com/watch?v=Gte3Z-GkC8s",
+        desc: "Modelo holístico de integración curricular de medios. Estrategias teórico-prácticas para que los docentes integren recursos interactivos, podcasts y video de forma natural y adaptativa."
+      },
+      6: {
+        unit: "Unidad 6",
+        title: "Construcción Autónoma del Conocimiento y Seguridad de la Información",
+        embedUrl: "https://www.youtube-nocookie.com/embed/yiYA4OfKuZw",
+        externalUrl: "https://www.youtube.com/watch?v=yiYA4OfKuZw",
+        desc: "Soberanía tecnológica, alfabetización informacional y la importancia de proteger la identidad digital y los datos personales en la construcción colaborativa del conocimiento en la red."
+      }
+    };
+
+    // Navegación Interactiva (Single Page Application SPA)
+    function switchSection(targetSectionId) {
+      // 1. Ocultar todas las secciones
+      document.querySelectorAll('.dossier-section').forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // 2. Desactivar todos los ítems del menú
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // 3. Activar la sección objetivo
+      const targetSection = document.getElementById(targetSectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // 4. Activar el ítem del menú correspondiente
+      const navItem = document.querySelector(`.nav-item[data-tab="${targetSectionId}"]`);
+      if (navItem) {
+        navItem.classList.add('active');
+      }
+
+      // Cerrar menú móvil al navegar
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.classList.contains('mobile-active')) {
+        sidebar.classList.remove('mobile-active');
+        document.getElementById('mobileToggle').innerHTML = '<i class="fa-solid fa-bars"></i>';
+      }
+    }
+
+    // Event Listeners para Enlaces del Menú Lateral
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tabId = this.getAttribute('data-tab');
+        switchSection(tabId);
+      });
+    });
+
+    // Control del Reproductor Destacado (Teatro del Video)
+    function loadVideo(id, cardElement) {
+      const videoData = videosData[id];
+      if (!videoData) return;
+
+      // 1. Quitar estado activo de otras tarjetas
+      document.querySelectorAll('.video-card').forEach(card => {
+        card.classList.remove('active-card');
+      });
+
+      // 2. Poner activo en la tarjeta clickeada
+      cardElement.classList.add('active-card');
+
+      // 3. Actualizar la información del teatro de reproducción
+      document.getElementById('theaterUnit').textContent = videoData.unit;
+      document.getElementById('theaterTitle').textContent = videoData.title;
+      document.getElementById('theaterDesc').textContent = videoData.desc;
+      
+      // Actualizar el enlace alternativo de escape de forma dinámica
+      document.getElementById('theaterExternalLink').href = videoData.externalUrl;
+
+      // 4. Inyectar nuevo iframe con el dominio seguro youtube-nocookie
+      const playerWrapper = document.getElementById('theaterPlayer');
+      playerWrapper.innerHTML = `
+        <iframe 
+          src="${videoData.embedUrl}" 
+          title="${videoData.title}" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      `;
+
+      // 5. Scroll suave hasta el reproductor para asegurar la comodidad de lectura
+      document.querySelector('.video-theater').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Toggle de Menú Móvil (Responsividad)
+    const mobileToggle = document.getElementById('mobileToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    mobileToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('mobile-active');
+      if (sidebar.classList.contains('mobile-active')) {
+        mobileToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+      } else {
+        mobileToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      }
+    });
+
+    // Manejar cambios de hash en la URL (Navegación por enlaces directos)
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash && ['portada', 'presentacion', 'tdr', 'metodologia', 'videoteca'].includes(hash)) {
+        switchSection(hash);
+      }
+    });
+  </script>
+</body>
+</html>
