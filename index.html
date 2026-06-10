@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TecnoMedia Studio - Dossier TDR Telecomunicaciones Educativas II</title>
+  <title>Señal Educativa - Dossier TDR Telecomunicaciones Educativas II</title>
   
   <!-- Fuentes e Iconos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,7 +101,7 @@
     }
 
     .brand {
-      padding: 24px;
+      padding: 20px 24px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -109,30 +109,38 @@
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--accent-neon), var(--accent-cyan));
-      border-radius: 10px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--bg-deep);
-      font-size: 1.25rem;
-      font-weight: 800;
-      box-shadow: 0 0 15px var(--accent-neon-glow);
+      background: var(--bg-card);
+      border: 1.5px solid var(--accent-cyan);
+      box-shadow: 0 0 15px var(--accent-cyan-glow);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .brand-info h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-white);
       letter-spacing: -0.5px;
+      line-height: 1.2;
     }
 
     .brand-info span {
       font-size: 0.75rem;
-      color: var(--accent-cyan);
+      color: var(--accent-neon);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -904,6 +912,66 @@
       color: var(--accent-neon);
     }
 
+    /* Caja de Promoción del Canal de YouTube */
+    .channel-promo-box {
+      background: linear-gradient(135deg, rgba(255, 74, 74, 0.05) 0%, rgba(23, 26, 35, 0.8) 100%);
+      border: 1px solid rgba(255, 74, 74, 0.2);
+      border-radius: 20px;
+      padding: 24px 30px;
+      margin-bottom: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .promo-content {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .promo-icon-circle {
+      width: 52px;
+      height: 52px;
+      background: rgba(255, 74, 74, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--accent-youtube);
+      box-shadow: 0 0 15px rgba(255, 74, 74, 0.15);
+      flex-shrink: 0;
+    }
+
+    .promo-text h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      color: var(--text-white);
+      margin-bottom: 4px;
+    }
+
+    .promo-text p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .btn-channel-promo {
+      background: var(--accent-youtube);
+      color: var(--text-white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(255, 74, 74, 0.3);
+      flex-shrink: 0;
+    }
+
+    .btn-channel-promo:hover {
+      background: #e03b3b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 74, 74, 0.5);
+    }
+
     /* Grid de Videos de la Videoteca */
     .video-grid {
       display: grid;
@@ -1089,6 +1157,23 @@
         grid-template-columns: 1fr;
       }
 
+      .channel-promo-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 24px;
+      }
+
+      .promo-content {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn-channel-promo {
+        width: 100%;
+        justify-content: center;
+      }
+
       .video-grid {
         grid-template-columns: 1fr;
       }
@@ -1113,11 +1198,13 @@
       <div>
         <div class="brand">
           <div class="brand-logo">
-            <i class="fa-solid fa-play"></i>
+            <!-- Logo principal Señal Educativa con Fallback robusto integrado -->
+            <img src="Señal educativa.jpg" alt="Señal Educativa" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+            <div id="logo-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--accent-neon), var(--accent-cyan)); color:var(--bg-deep); font-weight:800; font-size:1.1rem; font-family:'Space Grotesk', sans-serif;">SE</div>
           </div>
           <div class="brand-info">
-            <h1>TecnoMedia</h1>
-            <span>Studio</span>
+            <h1>Señal</h1>
+            <span>Educativa</span>
           </div>
         </div>
 
@@ -1137,7 +1224,7 @@
           <li class="nav-item" data-tab="tdr">
             <a href="#tdr">
               <i class="fa-solid fa-award"></i>
-              <span>Marco TDR</span>
+              <span>Marco y Justificación</span>
             </a>
           </li>
           <li class="nav-item" data-tab="metodologia">
@@ -1149,7 +1236,7 @@
           <li class="nav-item" data-tab="videoteca">
             <a href="#videoteca">
               <i class="fa-solid fa-photo-film"></i>
-              <span>Videoteca TDR</span>
+              <span>Videoteca</span>
             </a>
           </li>
         </ul>
@@ -1158,7 +1245,7 @@
       <div class="sidebar-footer">
         <div class="footer-meta">
           <p>Telecomunicaciones Educativas II</p>
-          <p>© 2026 TecnoMedia Studio</p>
+          <p>© 2026 Señal Educativa</p>
         </div>
       </div>
     </aside>
@@ -1178,13 +1265,13 @@
               Virtualización de Contenidos <span>Premium</span>
             </h2>
             <p class="hero-subtitle">
-              Propuesta de Servicios Audiovisuales bajo TDR para la asignatura de <strong>Telecomunicaciones Educativas II</strong>. Diseñada para transformar el currículo formal en experiencias de microaprendizaje audiovisual de alto impacto.
+              Propuesta de Servicios Audiovisuales para la asignatura de <strong>Telecomunicaciones Educativas II</strong>. Diseñada por la productora <strong>Señal Educativa</strong> para transformar el currículo formal en experiencias de microaprendizaje audiovisual de alto impacto.
             </p>
             <div class="hero-cta-group">
-              <a href="#presentacion" class="btn btn-primary" onclick="switchSection('presentacion'); return false;">
+              <a href="#presentacion" class="btn btn-primary" onclick="window.location.hash='presentacion'; return false;">
                 <i class="fa-solid fa-chevron-right"></i> Explorar Dossier
               </a>
-              <a href="#videoteca" class="btn btn-secondary" onclick="switchSection('videoteca'); return false;">
+              <a href="#videoteca" class="btn btn-secondary" onclick="window.location.hash='videoteca'; return false;">
                 <i class="fa-solid fa-circle-play"></i> Ver Videoteca
               </a>
             </div>
@@ -1193,7 +1280,7 @@
           <!-- Tarjeta del Equipo Consultor -->
           <div class="team-box">
             <div class="team-box-header">
-              <span>TecnoMedia Studio</span>
+              <span>Señal Educativa</span>
               <h3>Consultoría Técnica</h3>
             </div>
             <div class="team-list">
@@ -1243,7 +1330,7 @@
                 </div>
                 <div class="member-info">
                   <h4>Isaac Eliseo Santos Molina</h4>
-                  <p>Presentador</p>
+                  <p>Presentador y Dirección de Cámaras</p>
                 </div>
               </div>
             </div>
@@ -1267,14 +1354,14 @@
             </div>
             <div class="letter-body">
               <p>Estimados directivos y académicos de la institución,</p>
-              <p>En la era de la saturación informativa y los lapsos de atención selectiva, la educación superior se enfrenta a su mayor reto histórico: <strong>lograr un engagement real y significativo en los estudiantes</strong>. Tradicionalmente, la digitalización de la educación se ha confundido con el simple volcado de PDFs o grabaciones de clases magistrales monótonas de 2 horas. En <strong>TecnoMedia Studio</strong>, entendemos que la virtualización educativa requiere un tratamiento de comunicación completamente diferencial.</p>
-              <p>Tenemos el agrado de presentar este <strong>Dossier Tecnopedagógico</strong> que recopila nuestra línea de producción de videos de 15 minutos, optimizados de forma nativa para plataformas hiper-accesibles como YouTube. No se trata simplemente de colocar una cámara; se trata de una traducción integral de las 6 unidades curriculares fundamentales de la materia <em>Telecomunicaciones Educativas II</em>.</p>
+              <p>En la era de la saturación informativa y los lapsos de atención selectiva, la educación superior se enfrenta a su mayor reto histórico: <strong>lograr un engagement real y significativo en los estudiantes</strong>. Tradicionalmente, la digitalización de la educación se ha confundido con el simple volcado de PDFs o grabaciones de clases magistrales monótonas de 2 horas. En <strong>Señal Educativa</strong>, entendemos que la virtualización educativa requiere un tratamiento de comunicación completamente diferencial.</p>
+              <p>Tenemos el agrado de presentar este <strong>Dossier Tecnopedagógico</strong> que recopila nuestra línea de producción de videos de 10 a 20 minutos, optimizados de forma nativa para plataformas hiper-accesibles como YouTube. No se trata simplemente de colocar una cámara; se trata de una traducción integral de las 6 unidades curriculares fundamentales de la materia <em>Telecomunicaciones Educativas II</em>.</p>
               <p>Nuestra propuesta destaca por integrar de manera sinérgica la <strong>estética cinematográfica, el diseño de interfaces moderno y el diseño instruccional preciso</strong>. De este modo, convertimos conceptos densos (como el contexto sociocultural de la información o la soberanía tecnológica en telecomunicaciones) en piezas dinámicas enriquecidas, que fomentan el aprendizaje autónomo e interactivo.</p>
               <p>Estamos convencidos de que este proyecto es el estándar de oro que su organización necesita para proyectarse como líder de la educación digital.</p>
             </div>
             <div class="letter-signature">
               <h5>El Equipo Directivo</h5>
-              <p>Consorcio TecnoMedia Studio S.A. de C.V.</p>
+              <p>Consorcio Señal Educativa S.A. de C.V.</p>
             </div>
           </div>
 
@@ -1285,7 +1372,7 @@
                 <i class="fa-solid fa-stopwatch"></i>
               </div>
               <div>
-                <div class="stat-number">15 min</div>
+                <div class="stat-number">10-20 min</div>
                 <div class="stat-label">Rango óptimo de retención cognitiva por video</div>
               </div>
             </div>
@@ -1317,7 +1404,7 @@
       <section id="tdr" class="dossier-section">
         <div class="section-header">
           <span class="section-badge">Fundamentación Teórica</span>
-          <h2 class="section-title">Marco TDR y <span>Justificación</span></h2>
+          <h2 class="section-title">Marco y <span>Justificación</span></h2>
           <p class="section-description">Alineación conceptual con las exigencias del pliego técnico para el desarrollo educativo sostenible.</p>
         </div>
 
@@ -1352,8 +1439,8 @@
             <i class="fa-solid fa-circle-check"></i>
           </div>
           <div class="callout-text">
-            <h4>¿Por qué 15 minutos en YouTube como estándar pedagógico?</h4>
-            <p>Investigaciones contemporáneas en neuroeducación evidencian que el umbral de atención sostenida en plataformas virtuales tiene un declive drástico pasados los 15-18 minutos. Condensar las unidades curriculares bajo este estándar nos obliga a eliminar la paja teórica e ir directamente a los conceptos centrales de la telecomunicación educativa. YouTube se elige como la infraestructura de distribución idónea porque ofrece transcoding inteligente automático, adaptando la resolución dinámicamente y garantizando una experiencia de aprendizaje libre de fricción técnica.</p>
+            <h4>¿Por qué de 10 a 20 minutos en YouTube como estándar pedagógico?</h4>
+            <p>Investigaciones contemporáneas en neuroeducación evidencian que el umbral de atención sostenida en plataformas virtuales tiene un declive drástico pasados los 15 a 20 minutos, haciendo que el formato condensado sea óptimo. Condensar las unidades curriculares bajo este estándar nos obliga a eliminar la paja teórica e ir directamente a los conceptos centrales de la telecomunicación educativa. YouTube se elige como la infraestructura de distribución idónea porque ofrece transcoding inteligente automático, adaptando la resolución dinámicamente y garantizando una experiencia de aprendizaje libre de fricción técnica.</p>
           </div>
         </div>
       </section>
@@ -1466,7 +1553,7 @@
                 </div>
                 <div class="meta-tag">
                   <i class="fa-regular fa-clock"></i>
-                  <span>Aprox: 15 min</span>
+                  <span>Aprox: 10-20 min</span>
                 </div>
                 <div class="meta-tag">
                   <i class="fa-solid fa-film"></i>
@@ -1475,6 +1562,22 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Caja de Enlace y Promoción para el Canal Oficial de YouTube de Señal Educativa -->
+        <div class="channel-promo-box">
+          <div class="promo-content">
+            <div class="promo-icon-circle">
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+            <div class="promo-text">
+              <h4>Canal de YouTube Oficial</h4>
+              <p>Explore, interactúe y suscríbase al espacio principal de Señal Educativa en YouTube.</p>
+            </div>
+          </div>
+          <a href="https://www.youtube.com/channel/UC4f-seJGhY-XlgITO57vCvw" target="_blank" class="btn btn-primary btn-channel-promo">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Visitar Canal Oficial
+          </a>
         </div>
 
         <!-- Rejilla de videos alternativos -->
@@ -1632,6 +1735,7 @@
       const targetSection = document.getElementById(targetSectionId);
       if (targetSection) {
         targetSection.classList.add('active');
+        // Un suave scroll hacia arriba cuando se cambia de página de manera interactiva
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -1649,14 +1753,32 @@
       }
     }
 
-    // Event Listeners para Enlaces del Menú Lateral
+    // Configuración interactiva de hashes en el enrutamiento para evitar perder la página al refrescar
     document.querySelectorAll('.nav-item').forEach(item => {
       item.addEventListener('click', function(e) {
         e.preventDefault();
         const tabId = this.getAttribute('data-tab');
-        switchSection(tabId);
+        window.location.hash = tabId; // Cambiar el hash dispara el evento 'hashchange'
       });
     });
+
+    // Controlador del Hash para soportar recargas y botones de atrás/adelante en el navegador
+    function handleRoute() {
+      const hash = window.location.hash.substring(1);
+      const validTabs = ['portada', 'presentacion', 'tdr', 'metodologia', 'videoteca'];
+      
+      if (hash && validTabs.includes(hash)) {
+        switchSection(hash);
+      } else {
+        // Por defecto, si el hash está vacío o es inválido, forzar 'portada' en la URL
+        window.location.hash = 'portada';
+        switchSection('portada');
+      }
+    }
+
+    // Escuchadores de eventos para la navegación e inicialización
+    window.addEventListener('hashchange', handleRoute);
+    window.addEventListener('load', handleRoute);
 
     // Control del Reproductor Destacado (Teatro del Video)
     function loadVideo(id, cardElement) {
@@ -1705,14 +1827,6 @@
         mobileToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
       } else {
         mobileToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
-      }
-    });
-
-    // Manejar cambios de hash en la URL (Navegación por enlaces directos)
-    window.addEventListener('load', () => {
-      const hash = window.location.hash.substring(1);
-      if (hash && ['portada', 'presentacion', 'tdr', 'metodologia', 'videoteca'].includes(hash)) {
-        switchSection(hash);
       }
     });
   </script>
