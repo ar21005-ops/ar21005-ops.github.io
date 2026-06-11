@@ -23,6 +23,7 @@
       --accent-cyan: #00bfff;
       --accent-purple: #8b5cf6;
       --accent-youtube: #ff4a4a;
+      --accent-drive: #ffba00;
       
       --accent-neon-glow: rgba(0, 255, 136, 0.2);
       --accent-cyan-glow: rgba(0, 191, 255, 0.2);
@@ -972,6 +973,66 @@
       box-shadow: 0 6px 20px rgba(255, 74, 74, 0.5);
     }
 
+    /* Caja de Recursos Adicionales - Google Drive */
+    .drive-resources-box {
+      background: linear-gradient(135deg, rgba(255, 186, 0, 0.05) 0%, rgba(23, 26, 35, 0.8) 100%);
+      border: 1px solid rgba(255, 186, 0, 0.2);
+      border-radius: 20px;
+      padding: 24px 30px;
+      margin-bottom: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .drive-promo-content {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .drive-icon-circle {
+      width: 52px;
+      height: 52px;
+      background: rgba(255, 186, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--accent-drive);
+      box-shadow: 0 0 15px rgba(255, 186, 0, 0.15);
+      flex-shrink: 0;
+    }
+
+    .drive-text h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      color: var(--text-white);
+      margin-bottom: 4px;
+    }
+
+    .drive-text p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .btn-drive-promo {
+      background: var(--accent-drive);
+      color: var(--bg-deep);
+      border: none;
+      box-shadow: 0 4px 15px rgba(255, 186, 0, 0.3);
+      flex-shrink: 0;
+    }
+
+    .btn-drive-promo:hover {
+      background: #e6a800;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 186, 0, 0.5);
+    }
+
     /* Grid de Videos de la Videoteca */
     .video-grid {
       display: grid;
@@ -1100,6 +1161,316 @@
       height: 40px;
     }
 
+    /* --- ESTILOS DE SECCIÓN: ANALÍTICAS Y MÉTRICAS --- */
+    .metrics-intro-card {
+      background: linear-gradient(135deg, rgba(0, 223, 137, 0.02) 0%, rgba(23, 26, 35, 0.9) 100%);
+      border: 1px solid var(--glass-border);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+
+    .metrics-intro-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      color: var(--text-white);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .metrics-intro-card h3 i {
+      color: var(--accent-cyan);
+    }
+
+    .metrics-intro-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .metric-screenshot-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: var(--transition-smooth);
+    }
+
+    .metric-screenshot-card:hover {
+      border-color: rgba(0, 255, 136, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .metric-card-header {
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 12px;
+    }
+
+    .metric-card-header h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      color: var(--text-white);
+      line-height: 1.4;
+    }
+
+    .metric-card-header span {
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* Contenedor de Captura de Pantalla interactivo */
+    .screenshot-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* Relación 16:9 */
+      background: #090a0d;
+      border-radius: 12px;
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .screenshot-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: var(--transition-smooth);
+    }
+
+    .screenshot-container:hover img {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+    /* Diseño que simula una captura o previsualización vacía/estilizada */
+    .screenshot-inner-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(23, 26, 35, 0.7) 0%, rgba(9, 10, 13, 0.9) 100%);
+      z-index: 2;
+    }
+
+    .screenshot-inner-placeholder i {
+      font-size: 2rem;
+      color: var(--accent-cyan);
+      opacity: 0.8;
+      text-shadow: 0 0 15px var(--accent-cyan-glow);
+    }
+
+    .screenshot-inner-placeholder span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Fila de Analíticas Reales y Moderadas */
+    .metric-stats-row {
+      display: flex;
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .metric-stat-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .metric-stat-item strong {
+      color: var(--text-white);
+    }
+
+    .metric-stat-item i {
+      font-size: 0.9rem;
+    }
+
+    .metric-stat-item i.fa-eye {
+      color: var(--accent-cyan);
+    }
+
+    .metric-stat-item i.fa-thumbs-up {
+      color: var(--accent-neon);
+    }
+
+    .metric-stat-item i.fa-comment {
+      color: var(--accent-purple);
+    }
+
+    /* Caja de Comentario destacado de YouTube */
+    .comment-bubble {
+      background: rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 12px;
+      position: relative;
+    }
+
+    .comment-bubble::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 20px;
+      border-width: 0 6px 6px;
+      border-style: solid;
+      border-color: transparent transparent var(--glass-border);
+      display: block;
+      width: 0;
+    }
+
+    .comment-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .comment-avatar-mini {
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .comment-user {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-white);
+    }
+
+    .comment-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    /* --- ESTILOS DE SECCIÓN: REFLEXIONES DEL EQUIPO (NUEVA SECCIÓN) --- */
+    .reflections-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .reflection-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .reflection-card:hover {
+      border-color: var(--accent-neon);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 255, 136, 0.1);
+    }
+
+    .reflection-quote-icon {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 3rem;
+      color: rgba(0, 255, 136, 0.05);
+      font-family: 'Space Grotesk', sans-serif;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .reflection-text {
+      font-size: 0.98rem;
+      color: var(--text-primary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reflection-author-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid var(--glass-border);
+      padding-top: 20px;
+    }
+
+    .reflection-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0, 255, 136, 0.05);
+      border: 1.5px solid var(--accent-neon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-neon);
+      font-size: 1.2rem;
+      box-shadow: 0 0 10px var(--accent-neon-glow);
+    }
+
+    .reflection-author-details h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-white);
+    }
+
+    .reflection-author-details span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     /* --- RESPONSIVIDAD (MOBILE-FIRST) --- */
     @media (max-width: 1200px) {
       .hero-container {
@@ -1128,6 +1499,14 @@
       
       .video-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reflections-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1199,7 +1578,7 @@
         <div class="brand">
           <div class="brand-logo">
             <!-- Logo principal Señal Educativa con Fallback robusto integrado -->
-            <img src="Señal educativa.png" alt="Señal Educativa" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+            <img src="Señal educativa.jpg" alt="Señal Educativa" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
             <div id="logo-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--accent-neon), var(--accent-cyan)); color:var(--bg-deep); font-weight:900; font-size:1.1rem; font-family:'Space Grotesk', sans-serif;">SE</div>
           </div>
           <div class="brand-info">
@@ -1237,6 +1616,24 @@
             <a href="#videoteca">
               <i class="fa-solid fa-photo-film"></i>
               <span>Videoteca</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="metricas">
+            <a href="#metricas">
+              <i class="fa-solid fa-chart-bar"></i>
+              <span>Métricas y Alcance</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="reflexiones">
+            <a href="#reflexiones">
+              <i class="fa-solid fa-brain"></i>
+              <span>Reflexiones</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="referencias">
+            <a href="#referencias">
+              <i class="fa-solid fa-book-bookmark"></i>
+              <span>Referencias</span>
             </a>
           </li>
         </ul>
@@ -1353,7 +1750,7 @@
               <span>Emisión: San Salvador, El Salvador</span>
             </div>
             <div class="letter-body">
-              <p>Estimados directivos y académicos de la institución,</p>
+              <p>Estimados directivos and académicos de la institución,</p>
               <p>En la era de la saturación informativa y los lapsos de atención selectiva, la educación superior se enfrenta a su mayor reto histórico: <strong>lograr un engagement real y significativo en los estudiantes</strong>. Tradicionalmente, la digitalización de la educación se ha confundido con el simple volcado de PDFs o grabaciones de clases magistrales monótonas de 2 horas. En <strong>Señal Educativa</strong>, entendemos que la virtualización educativa requiere un tratamiento de comunicación completamente diferencial.</p>
               <p>Tenemos el agrado de presentar este <strong>Dossier Tecnopedagógico</strong> que recopila nuestra línea de producción de videos de 10 a 20 minutos, optimizados de forma nativa para plataformas hiper-accesibles como YouTube. No se trata simplemente de colocar una cámara; se trata de una traducción integral de las 6 unidades curriculares fundamentales de la materia <em>Telecomunicaciones Educativas II</em>.</p>
               <p>Nuestra propuesta destaca por integrar de manera sinérgica la <strong>estética cinematográfica, el diseño de interfaces moderno y el diseño instruccional preciso</strong>. De este modo, convertimos conceptos densos (como el contexto sociocultural de la información o la soberanía tecnológica en telecomunicaciones) en piezas dinámicas enriquecidas, que fomentan el aprendizaje autónomo e interactivo.</p>
@@ -1580,6 +1977,22 @@
           </a>
         </div>
 
+        <!-- Caja de Recursos Adicionales (Google Drive) -->
+        <div class="drive-resources-box">
+          <div class="drive-promo-content">
+            <div class="drive-icon-circle">
+              <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <div class="drive-text">
+              <h4>Recursos Educativos y Material de Apoyo</h4>
+              <p>Acceda a la carpeta oficial de Google Drive donde compartimos los guiones de producción y los resúmenes pedagógicos estructurados de las unidades.</p>
+            </div>
+          </div>
+          <a href="https://drive.google.com/drive/folders/1604LqkWB-WbGky7h2Xd5lVPYP_boHK05?usp=sharing" target="_blank" class="btn btn-primary btn-drive-promo">
+            <i class="fa-brands fa-google-drive"></i> Ir a Google Drive
+          </a>
+        </div>
+
         <!-- Rejilla de videos alternativos -->
         <div class="video-grid">
           <!-- Card 1 -->
@@ -1668,6 +2081,421 @@
         </div>
       </section>
 
+      <!-- SECCIÓN 6: MÉTRICAS Y ALCANCE -->
+      <section id="metricas" class="dossier-section">
+        <div class="section-header">
+          <span class="section-badge">Monitorización de Impacto</span>
+          <h2 class="section-title">Alcance e <span>Interacción</span></h2>
+          <p class="section-description">Estadísticas reales de tracción inicial y retroalimentación cualitativa recopilada del entorno académico.</p>
+        </div>
+
+        <div class="metrics-intro-card">
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> Nota de Rigor Tecnopedagógico</h3>
+          <p>Las siguientes métricas reflejan la <strong>etapa de implementación piloto y lanzamiento orgánico</strong> del canal. En Señal Educativa entendemos que el valor de un recurso audiovisual educativo no reside en la viralidad de masas, sino en el <strong>nivel de asimilación cualitativa y el engagement controlado</strong> del nicho de aprendizaje (estudiantes y docentes de la asignatura). Las analíticas muestran una progresión inicial sólida y feedback de gran valor para la mejora continua.</p>
+        </div>
+
+        <div class="metrics-grid">
+          <!-- Video 1 -->
+          <div class="metric-screenshot-card">
+            <div class="metric-card-header">
+              <span>Unidad 01</span>
+              <h4>Contexto Histórico e Influencia de la Información en la Cultura</h4>
+            </div>
+            <div class="screenshot-container">
+              <img src="captura1.png" alt="Analíticas del Video 1" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 1</span>
+              </div>
+            </div>
+            <div class="metric-stats-row">
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-eye"></i>
+                <span>Vistas: <strong>34</strong></span>
+              </div>
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <span>Me Gusta: <strong>8</strong></span>
+              </div>
+            </div>
+            <div class="comment-bubble">
+              <div class="comment-header">
+                <div class="comment-avatar-mini">E</div>
+                <span class="comment-user">Eduardo R. (Estudiante)</span>
+              </div>
+              <p class="comment-text">"La explicación del cambio cultural de la imprenta a la red está muy bien resumida. Ideal para repasar."</p>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="metric-screenshot-card">
+            <div class="metric-card-header">
+              <span>Unidad 02</span>
+              <h4>Medios de Comunicación en los Procesos de Enseñanza y Aprendizaje</h4>
+            </div>
+            <div class="screenshot-container">
+              <img src="captura2.png" alt="Analíticas del Video 2" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 2</span>
+              </div>
+            </div>
+            <div class="metric-stats-row">
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-eye"></i>
+                <span>Vistas: <strong>29</strong></span>
+              </div>
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <span>Me Gusta: <strong>5</strong></span>
+              </div>
+            </div>
+            <div class="comment-bubble">
+              <div class="comment-header">
+                <div class="comment-avatar-mini">M</div>
+                <span class="comment-user">Marta Gomez (Docente)</span>
+              </div>
+              <p class="comment-text">"Excelente propuesta metodológica para integrar recursos multimedia en el aula virtual de forma sencilla."</p>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="metric-screenshot-card">
+            <div class="metric-card-header">
+              <span>Unidad 03</span>
+              <h4>Las Telecomunicaciones y el Desarrollo de Competencias en el Aprendizaje</h4>
+            </div>
+            <div class="screenshot-container">
+              <img src="captura3.png" alt="Analíticas del Video 3" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 3</span>
+              </div>
+            </div>
+            <div class="metric-stats-row">
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-eye"></i>
+                <span>Vistas: <strong>41</strong></span>
+              </div>
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <span>Me Gusta: <strong>11</strong></span>
+              </div>
+            </div>
+            <div class="comment-bubble">
+              <div class="comment-header">
+                <div class="comment-avatar-mini">J</div>
+                <span class="comment-user">Jose L. (Estudiante)</span>
+              </div>
+              <p class="comment-text">"Me aclaró totalmente cómo las redes de alta velocidad impactan en el trabajo colaborativo en tiempo real."</p>
+            </div>
+          </div>
+
+          <!-- Video 4 -->
+          <div class="metric-screenshot-card">
+            <div class="metric-card-header">
+              <span>Unidad 04</span>
+              <h4>Posibilidades Educativas de la Videoconferencia en la Educación a Distancia</h4>
+            </div>
+            <div class="screenshot-container">
+              <img src="captura4.png" alt="Analíticas del Video 4" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 4</span>
+              </div>
+            </div>
+            <div class="metric-stats-row">
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-eye"></i>
+                <span>Vistas: <strong>26</strong></span>
+              </div>
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <span>Me Gusta: <strong>6</strong></span>
+              </div>
+            </div>
+            <div class="comment-bubble">
+              <div class="comment-header">
+                <div class="comment-avatar-mini">S</div>
+                <span class="comment-user">Sara Mendez (Investigadora)</span>
+              </div>
+              <p class="comment-text">"Aborda de manera muy lógica el cansancio por pantalla y propone alternativas muy dinámicas."</p>
+            </div>
+          </div>
+
+          <!-- Video 5 -->
+          <div class="metric-screenshot-card">
+            <div class="metric-card-header">
+              <span>Unidad 05</span>
+              <h4>La integración de los Medios de Comunicación en el Proceso de Aprendizaje</h4>
+            </div>
+            <div class="screenshot-container">
+              <img src="captura5.png" alt="Analíticas del Video 5" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 5</span>
+              </div>
+            </div>
+            <div class="metric-stats-row">
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-eye"></i>
+                <span>Vistas: <strong>33</strong></span>
+              </div>
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <span>Me Gusta: <strong>7</strong></span>
+              </div>
+            </div>
+            <div class="comment-bubble">
+              <div class="comment-header">
+                <div class="comment-avatar-mini">F</div>
+                <span class="comment-user">Francisco V. (Tutor Virtual)</span>
+              </div>
+              <p class="comment-text">"La analogía sobre la dieta medial es fantástica. Un recurso indispensable para docentes en formación."</p>
+            </div>
+          </div>
+
+          <!-- Video 6 -->
+          <div class="metric-screenshot-card">
+            <div class="metric-card-header">
+              <span>Unidad 06</span>
+              <h4>Construcción Autónoma del Conocimiento y Seguridad de la Información</h4>
+            </div>
+            <div class="screenshot-container">
+              <img src="captura6.png" alt="Analíticas del Video 6" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 6</span>
+              </div>
+            </div>
+            <div class="metric-stats-row">
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-eye"></i>
+                <span>Vistas: <strong>38</strong></span>
+              </div>
+              <div class="metric-stat-item">
+                <i class="fa-regular fa-thumbs-up"></i>
+                <span>Me Gusta: <strong>10</strong></span>
+              </div>
+            </div>
+            <div class="comment-bubble">
+              <div class="comment-header">
+                <div class="comment-avatar-mini">K</div>
+                <span class="comment-user">Karla T. (Estudiante)</span>
+              </div>
+              <p class="comment-text">"Crucial el segmento sobre seguridad y protección de datos. Un cierre de asignatura excelente."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 7: REFLEXIONES DEL EQUIPO (NUEVA SECCIÓN) -->
+      <section id="reflexiones" class="dossier-section">
+        <div class="section-header">
+          <span class="section-badge">Balance del Ciclo</span>
+          <h2 class="section-title">Reflexiones del <span>Equipo</span></h2>
+          <p class="section-description">Un balance introspectivo sobre los aprendizajes, el impacto tecnológico y el desarrollo pedagógico de este proyecto.</p>
+        </div>
+
+        <div class="reflections-grid">
+          <!-- Reflexión 1: Diego -->
+          <div class="reflection-card">
+            <span class="reflection-quote-icon">“</span>
+            <p class="reflection-text">
+              "Al cerrar este ciclo, mi mayor aprendizaje fue entender que el video educativo no es solo un archivo multimedia, sino un nodo de información que debe ser eficiente. Como informático, mi chip inicial era optimizar código, pero aquí tuve que optimizar la transmisión del conocimiento. Diseñar contenido didáctico para telecomunicaciones me obligó a pensar en la estructura: cómo segmentar un tema complejo de redes en módulos consumibles (microlearning) para que el usuario final realmente procese la información sin sufrir sobrecarga cognitiva."
+            </p>
+            <div class="reflection-author-info">
+              <div class="reflection-avatar">
+                <i class="fa-solid fa-scissors"></i>
+              </div>
+              <div class="reflection-author-details">
+                <h4>Diego Alexander Orellana Cortez</h4>
+                <span>Edición y Postproducción de Video</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reflexión 2: Rodrigo -->
+          <div class="reflection-card">
+            <span class="reflection-quote-icon">“</span>
+            <p class="reflection-text">
+              "Mi reflexión en este ciclo se centra en el canal y el medio. De nada sirve que creemos el video con la mejor pedagogía si el estudiante lo ve pausado por problemas de buffering. Como estudiantes de informática, tenemos la responsabilidad de entender el impacto del bitrate, los formatos de compresión (como H.264 o H.265) y la distribución a través de redes saturadas. Este proyecto me demostró que la verdadera informática educativa democratiza el acceso, logrando que el material sea ligero, fluido y accesible para cualquier ancho de banda."
+            </p>
+            <div class="reflection-author-info">
+              <div class="reflection-avatar">
+                <i class="fa-solid fa-microphone-lines"></i>
+              </div>
+              <div class="reflection-author-details">
+                <h4>Rodrigo Enrique Arevalo Ruiz</h4>
+                <span>Presentador y Locución Profesional</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reflexión 3: Gabriela -->
+          <div class="reflection-card">
+            <span class="reflection-quote-icon">“</span>
+            <p class="reflection-text">
+              "Para mí, la creación de estos videos educativos fue un ejercicio puro de UX (User Experience). Un video aburrido o mal estructurado es el equivalente a una aplicación con una interfaz terrible: el usuario la abandona. Este ciclo me enseñó a maquetar el contenido audiovisual pensando en la interactividad; no queríamos espectadores pasivos, sino estudiantes activos. Integrar elementos visuales claros, transiciones lógicas y llamadas a la acción transformó el video de un simple monólogo a una herramienta interactiva de aprendizaje."
+            </p>
+            <div class="reflection-author-info">
+              <div class="reflection-avatar">
+                <i class="fa-solid fa-pen-nib"></i>
+              </div>
+              <div class="reflection-author-details">
+                <h4>Gabriela Guadalupe Hernandez Mejia</h4>
+                <span>Diseño Instruccional y Guionismo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reflexión 4: Erick -->
+          <div class="reflection-card">
+            <span class="reflection-quote-icon">“</span>
+            <p class="reflection-text">
+              "Mi balance de este ciclo va más allá de la producción: pienso en las métricas de rendimiento. Como informáticos, los datos nos hablan. Al analizar el comportamiento de los usuarios con el contenido didáctico (tasas de retención, en qué minuto la mayoría ponía pausa o abandonaba el video), pudimos iterar y mejorar la producción. Las telecomunicaciones educativas nos dan el poder de medir el aprendizaje en tiempo real, y este ciclo me demostró que el análisis de datos es vital para refinar cualquier estrategia educativa digital."
+            </p>
+            <div class="reflection-author-info">
+              <div class="reflection-avatar">
+                <i class="fa-solid fa-cubes"></i>
+              </div>
+              <div class="reflection-author-details">
+                <h4>Erick Alexis Martinez</h4>
+                <span>Diseño de Motion Graphics y Arte</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reflexión 5: Isaac -->
+          <div class="reflection-card" style="grid-column: span 1;">
+            <span class="reflection-quote-icon">“</span>
+            <p class="reflection-text">
+              "Este ciclo me dejó claro que el video didáctico es solo una pieza de un rompecabezas más grande. Mi enfoque estuvo en la integración: cómo hacer que estos recursos audiovisuales convivan perfectamente dentro de un entorno virtual de aprendizaje (LMS como Moodle o Classroom) a través de protocolos estandarizados (como SCORM o xAPI). El reto no fue solo grabar, sino sistematizar el contenido para que las telecomunicaciones sirvan de puente real entre el servidor donde se aloja el video y el dispositivo del estudiante."
+            </p>
+            <div class="reflection-author-info">
+              <div class="reflection-avatar">
+                <i class="fa-solid fa-photo-film"></i>
+              </div>
+              <div class="reflection-author-details">
+                <h4>Isaac Eliseo Santos Molina</h4>
+                <span>Presentador y Dirección de Cámaras</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 8: REFERENCIAS BIBLIOGRÁFICAS -->
+      <section id="referencias" class="dossier-section">
+        <div class="section-header">
+          <span class="section-badge">Sustento Científico</span>
+          <h2 class="section-title">Referencias <span>Bibliográficas</span></h2>
+          <p class="section-description">Fuentes teóricas, metodológicas y marcos regulativos globales que respaldan la viabilidad tecnopedagógica de esta propuesta.</p>
+        </div>
+
+        <div class="metrics-intro-card" style="border-left-color: var(--accent-purple); background: linear-gradient(135deg, rgba(139, 92, 246, 0.02) 0%, rgba(23, 26, 35, 0.9) 100%); margin-bottom: 30px;">
+          <h3><i class="fa-solid fa-circle-nodes" style="color: var(--accent-purple);"></i> Rigor de Investigación y Desarrollo</h3>
+          <p>La arquitectura de contenidos de <strong>Señal Educativa</strong> no se limita a la producción de material multimedia estándar. Cada guion literario, técnico y pedagógico se cimenta sobre investigaciones contemporáneas de aprendizaje multimedia, neuroeducación y políticas de telecomunicaciones orientadas al desarrollo sostenible.</p>
+        </div>
+
+        <div class="metrics-grid">
+          <!-- Referencia 1: UNESCO -->
+          <div class="metric-screenshot-card" style="gap: 12px;">
+            <div class="metric-card-header" style="padding-bottom: 8px;">
+              <span style="color: var(--accent-neon);">Eje: Innovación Global y TIC</span>
+              <h4 style="font-size: 1.1rem; margin-top: 4px;">UNESCO (2026)</h4>
+            </div>
+            <p class="comment-text" style="font-style: normal; font-size: 0.95rem; color: var(--text-primary); line-height: 1.5;">
+              UNESCO. (2026). <em>Innovación educativa y TIC en educación</em>. UNESCO.
+            </p>
+            <div class="comment-bubble" style="background: rgba(255, 255, 255, 0.01); border-color: rgba(255,255,255,0.03);">
+              <p class="comment-text" style="font-size: 0.85rem;">
+                <strong>Sustento del Proyecto:</strong> Enmarca las directivas de transformación educativa digital necesarias para la virtualización de contenidos a nivel internacional.
+              </p>
+              <a href="https://www.unesco.org/es/innovacionticeducacion" target="_blank" style="font-size: 0.75rem; color: var(--accent-cyan); display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; text-decoration: none;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Acceder a la fuente
+              </a>
+            </div>
+          </div>
+
+          <!-- Referencia 2: Area Moreira -->
+          <div class="metric-screenshot-card" style="gap: 12px;">
+            <div class="metric-card-header" style="padding-bottom: 8px;">
+              <span style="color: var(--accent-cyan);">Eje: Integración en el Sistema Escolar</span>
+              <h4 style="font-size: 1.1rem; margin-top: 4px;">Area Moreira, M. (2004)</h4>
+            </div>
+            <p class="comment-text" style="font-style: normal; font-size: 0.95rem; color: var(--text-primary); line-height: 1.5;">
+              Area Moreira, M. (2004). Las tecnologías de la información y comunicación en el sistema escolar: una revisión de las líneas de investigación. <em>Revista Electrónica de Investigación y Evaluación Educativa</em>.
+            </p>
+            <div class="comment-bubble" style="background: rgba(255, 255, 255, 0.01); border-color: rgba(255,255,255,0.03);">
+              <p class="comment-text" style="font-size: 0.85rem;">
+                <strong>Sustento del Proyecto:</strong> Brinda las bases de análisis metodológico de cómo se comportan las TIC y las infraestructuras escolares en la asimilación del aprendizaje.
+              </p>
+              <a href="https://www.researchgate.net/publication/28086713_Las_tecnologias_de_la_informacion_y_comunicacion_en_el_sistema_escolar_una_revision_de_las_lineas_de_investigacion" target="_blank" style="font-size: 0.75rem; color: var(--accent-cyan); display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; text-decoration: none;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Acceder a la fuente
+              </a>
+            </div>
+          </div>
+
+          <!-- Referencia 3: García-Valcárcel -->
+          <div class="metric-screenshot-card" style="gap: 12px;">
+            <div class="metric-card-header" style="padding-bottom: 8px;">
+              <span style="color: var(--accent-purple);">Eje: Evolución de la Disciplina</span>
+              <h4 style="font-size: 1.1rem; margin-top: 4px;">García-Valcárcel Muñoz-Repiso, A. (2002)</h4>
+            </div>
+            <p class="comment-text" style="font-style: normal; font-size: 0.95rem; color: var(--text-primary); line-height: 1.5;">
+              García-Valcárcel Muñoz-Repiso, A. (2002). Tecnología educativa: Características y evolución de una disciplina. <em>Revista Educación y Pedagogía</em>, 14(33), 65-87.
+            </p>
+            <div class="comment-bubble" style="background: rgba(255, 255, 255, 0.01); border-color: rgba(255,255,255,0.03);">
+              <p class="comment-text" style="font-size: 0.85rem;">
+                <strong>Sustento del Proyecto:</strong> Detalla la conceptualización histórica y la transdisciplinariedad de la Tecnología Educativa para un diseño instruccional estructurado.
+              </p>
+              <a href="https://dialnet.unirioja.es/servlet/articulo?codigo=7679906" target="_blank" style="font-size: 0.75rem; color: var(--accent-cyan); display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; text-decoration: none;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Acceder a la fuente
+              </a>
+            </div>
+          </div>
+
+          <!-- Referencia 4: Luján Ferrer & Salas Madriz -->
+          <div class="metric-screenshot-card" style="gap: 12px;">
+            <div class="metric-card-header" style="padding-bottom: 8px;">
+              <span style="color: var(--accent-neon);">Eje: Enfoques Teóricos del Siglo XX</span>
+              <h4 style="font-size: 1.1rem; margin-top: 4px;">Luján Ferrer, M. E., & Salas Madriz, F. (2009)</h4>
+            </div>
+            <p class="comment-text" style="font-style: normal; font-size: 0.95rem; color: var(--text-primary); line-height: 1.5;">
+              Luján Ferrer, M. E., & Salas Madriz, F. (2009). Enfoques teóricos y definiciones de la tecnología educativa en el siglo XX. <em>Actualidades Investigativas en Educación</em>, 9(2).
+            </p>
+            <div class="comment-bubble" style="background: rgba(255, 255, 255, 0.01); border-color: rgba(255,255,255,0.03);">
+              <p class="comment-text" style="font-size: 0.85rem;">
+                <strong>Sustento del Proyecto:</strong> Expone el análisis constructivista y cognitivo que valida el uso de herramientas asíncronas para el autoaprendizaje.
+              </p>
+              <a href="https://archivo.revistas.ucr.ac.cr/index.php/aie/article/view/9545" target="_blank" style="font-size: 0.75rem; color: var(--accent-cyan); display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; text-decoration: none;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Acceder a la fuente
+              </a>
+            </div>
+          </div>
+
+          <!-- Referencia 5: Blanton, Moorman & Trathen -->
+          <div class="metric-screenshot-card" style="gap: 12px; grid-column: span 1;">
+            <div class="metric-card-header" style="padding-bottom: 8px;">
+              <span style="color: var(--accent-cyan);">Eje: Telecomunicaciones y Socioconstructivismo</span>
+              <h4 style="font-size: 1.1rem; margin-top: 4px;">Blanton, W. E., Moorman, G., & Trathen, W. (1998)</h4>
+            </div>
+            <p class="comment-text" style="font-style: normal; font-size: 0.95rem; color: var(--text-primary); line-height: 1.5;">
+              Blanton, W. E., Moorman, G., & Trathen, W. (1998). Telecommunications and Teacher Education: A Social Constructivist Review. <em>Journal of Teacher Education</em>.
+            </p>
+            <div class="comment-bubble" style="background: rgba(255, 255, 255, 0.01); border-color: rgba(255,255,255,0.03);">
+              <p class="comment-text" style="font-size: 0.85rem;">
+                <strong>Sustento del Proyecto:</strong> Brinda el sustento teórico de la Unidad 3 sobre cómo el uso de las redes estimula la construcción colectiva del conocimiento.
+              </p>
+              <a href="https://journals.sagepub.com/doi/10.3102/0091732X023001235" target="_blank" style="font-size: 0.75rem; color: var(--accent-cyan); display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; text-decoration: none;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Acceder a la fuente
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -1684,7 +2512,7 @@
       },
       2: {
         unit: "Unidad 2",
-        title: "Medios de Comunicación en los Procesos de Enseñanza y Aprendizaje",
+        title: "Medios de Comunicación en los Procesos de Enseñanza and Aprendizaje",
         embedUrl: "https://www.youtube-nocookie.com/embed/ymIX_fdUoQI",
         externalUrl: "https://www.youtube.com/watch?v=ymIX_fdUoQI",
         desc: "Exploración exhaustiva de los medios tradicionales y digitales integrados como agentes activos del diseño instruccional, maximizando canales visuales, auditivos y kinestésicos en el estudiante."
@@ -1754,10 +2582,10 @@
     }
 
     // Configuración interactiva de hashes en el enrutamiento para evitar perder la página al refrescar
-    document.querySelectorAll('.nav-item').forEach(item => {
+    document.querySelectorAll('.nav-item a').forEach(item => {
       item.addEventListener('click', function(e) {
         e.preventDefault();
-        const tabId = this.getAttribute('data-tab');
+        const tabId = this.parentNode.getAttribute('data-tab');
         window.location.hash = tabId; // Cambiar el hash dispara el evento 'hashchange'
       });
     });
@@ -1765,7 +2593,7 @@
     // Controlador del Hash para soportar recargas y botones de atrás/adelante en el navegador
     function handleRoute() {
       const hash = window.location.hash.substring(1);
-      const validTabs = ['portada', 'presentacion', 'tdr', 'metodologia', 'videoteca'];
+      const validTabs = ['portada', 'presentacion', 'tdr', 'metodologia', 'videoteca', 'metricas', 'reflexiones', 'referencias'];
       
       if (hash && validTabs.includes(hash)) {
         switchSection(hash);
