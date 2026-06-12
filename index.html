@@ -609,6 +609,65 @@
       color: var(--text-muted);
     }
 
+    /* Caja de Alianzas y Oportunidad de Negocios (Contacto) */
+    .business-contact-box {
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.04) 0%, rgba(23, 26, 35, 0.8) 100%);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      border-radius: 20px;
+      padding: 24px 30px;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .contact-promo-content {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .contact-icon-circle {
+      width: 52px;
+      height: 52px;
+      background: rgba(0, 255, 136, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--accent-neon);
+      box-shadow: 0 0 15px var(--accent-neon-glow);
+      flex-shrink: 0;
+    }
+
+    .contact-text-box h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      color: var(--text-white);
+      margin-bottom: 4px;
+    }
+
+    .contact-text-box p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .btn-contact {
+      background: linear-gradient(135deg, var(--accent-neon), var(--accent-cyan));
+      color: var(--bg-deep);
+      border: none;
+      box-shadow: 0 4px 15px var(--accent-neon-glow);
+      flex-shrink: 0;
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+    }
+
     /* --- ESTILOS DE SECCIÓN: MARCO TDR y JUSTIFICACIÓN --- */
     .tdr-grid {
       display: grid;
@@ -1387,7 +1446,7 @@
       font-style: italic;
     }
 
-    /* --- ESTILOS DE SECCIÓN: REFLEXIONES DEL EQUIPO (NUEVA SECCIÓN) --- */
+    /* --- ESTILOS DE SECCIÓN: REFLEXIONES DEL EQUIPO --- */
     .reflections-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1471,6 +1530,68 @@
       letter-spacing: 0.5px;
     }
 
+    /* Estilos de Misión y Visión Corporativa */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .mv-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: var(--transition-smooth);
+    }
+
+    .mv-card:hover {
+      border-color: var(--accent-neon);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 255, 136, 0.05);
+    }
+
+    .mv-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(0, 255, 136, 0.1);
+      color: var(--accent-neon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 15px rgba(0, 255, 136, 0.05);
+    }
+
+    .mv-card:nth-child(2) .mv-icon {
+      background: rgba(0, 191, 255, 0.1);
+      color: var(--accent-cyan);
+    }
+
+    .mv-card:nth-child(2):hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 10px 25px rgba(0, 191, 255, 0.05);
+    }
+
+    .mv-content h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+
+    .mv-content p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
     /* --- RESPONSIVIDAD (MOBILE-FIRST) --- */
     @media (max-width: 1200px) {
       .hero-container {
@@ -1507,6 +1628,11 @@
 
       .reflections-grid {
         grid-template-columns: 1fr;
+      }
+
+      .mv-grid {
+        grid-template-columns: 1fr;
+        margin-top: 30px;
       }
     }
 
@@ -1549,6 +1675,23 @@
       }
 
       .btn-channel-promo {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .business-contact-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 24px;
+      }
+
+      .contact-promo-content {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn-contact {
         width: 100%;
         justify-content: center;
       }
@@ -1652,8 +1795,8 @@
       
       <!-- SECCIÓN 1: PORTADA -->
       <section id="portada" class="dossier-section active">
-        <div class="hero-container">
-          <div class="hero-content">
+        <div class="hero-container" style="grid-template-columns: 1fr; min-height: auto; padding-top: 40px;">
+          <div class="hero-content" style="max-width: 900px;">
             <div class="hero-tag">
               <span class="dot"></span>
               <span>Propuesta Tecnopedagógica Homologada</span>
@@ -1673,8 +1816,32 @@
               </a>
             </div>
           </div>
+        </div>
 
-          <!-- Tarjeta del Equipo Consultor -->
+        <!-- Misión y Visión Corporativa (Ahora arriba de la Consultoría Técnica) -->
+        <div class="mv-grid">
+          <div class="mv-card">
+            <div class="mv-icon">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <div class="mv-content">
+              <h3>Nuestra Misión</h3>
+              <p>Transformar el conocimiento académico complejo en experiencias ágiles de microaprendizaje audiovisual. Desarrollamos recursos didácticos de alto impacto que unifican el rigor científico, la claridad conceptual y la excelencia multimedia, adaptando de manera óptima los contenidos a las realidades y necesidades de los estudiantes del siglo XXI.</p>
+            </div>
+          </div>
+          <div class="mv-card">
+            <div class="mv-icon">
+              <i class="fa-solid fa-compass"></i>
+            </div>
+            <div class="mv-content">
+              <h3>Nuestra Visión</h3>
+              <p>Consolidarnos como el referente regional en soluciones y servicios tecnopedagógicos. Aspiramos a liderar la transición hacia modelos de aprendizaje multimedia interactivos, asíncronos y multiplataforma que faciliten de manera óptima la descentralización del aula escolar y mitiguen activamente la brecha digital.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta del Equipo Consultor (Ubicado debajo de Misión y Visión) -->
+        <div class="team-section" style="margin-top: 50px;">
           <div class="team-box">
             <div class="team-box-header">
               <span>Señal Educativa</span>
@@ -1795,6 +1962,22 @@
             </div>
           </div>
         </div>
+
+        <!-- Caja de Contacto de Negocios y Oportunidad de Planes -->
+        <div class="business-contact-box">
+          <div class="contact-promo-content">
+            <div class="contact-icon-circle">
+              <i class="fa-solid fa-handshake-simple"></i>
+            </div>
+            <div class="contact-text-box">
+              <h4>¿Buscando virtualizar sus contenidos académicos?</h4>
+              <p>Ofrecemos planes corporativos a la medida para la creación y postproducción de video tecnopedagógico. Solicite una propuesta de servicios.</p>
+            </div>
+          </div>
+          <a href="mailto:educafacil503@gmail.com?subject=Consulta%20de%20Servicios%20Audiovisuales%20-%20Se%C3%B1al%20Educativa" class="btn btn-primary btn-contact">
+            <i class="fa-solid fa-envelope"></i> Contactar Negocios
+          </a>
+        </div>
       </section>
 
       <!-- SECCIÓN 3: MARCO TDR Y JUSTIFICACIÓN PEDAGÓGICA -->
@@ -1896,7 +2079,7 @@
             <ul class="step-details">
               <li>
                 <i class="fa-solid fa-circle-play"></i>
-                <span><strong>Edición No Lineal y Grafismo:</strong> Inserción de rótulos explicativos, esquemas visuales animados y transiciones sutiles para reforzar los conceptos complejos.</span>
+                <span><strong>Edición No Lineal y Grafismo:</strong> Inserción de rótulos explicativos, esquemas visuales animados and transiciones sutiles para reforzar los conceptos complejos.</span>
               </li>
               <li>
                 <i class="fa-solid fa-circle-play"></i>
@@ -2103,7 +2286,10 @@
             </div>
             <div class="screenshot-container">
               <img src="captura1.png" alt="Analíticas del Video 1" onerror="this.style.display='none';">
-
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 1</span>
+              </div>
             </div>
             <div class="metric-stats-row">
               <div class="metric-stat-item">
@@ -2132,6 +2318,10 @@
             </div>
             <div class="screenshot-container">
               <img src="captura2.png" alt="Analíticas del Video 2" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 2</span>
+              </div>
             </div>
             <div class="metric-stats-row">
               <div class="metric-stat-item">
@@ -2160,6 +2350,10 @@
             </div>
             <div class="screenshot-container">
               <img src="captura3.png" alt="Analíticas del Video 3" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 3</span>
+              </div>
             </div>
             <div class="metric-stats-row">
               <div class="metric-stat-item">
@@ -2188,6 +2382,10 @@
             </div>
             <div class="screenshot-container">
               <img src="captura4.png" alt="Analíticas del Video 4" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 4</span>
+              </div>
             </div>
             <div class="metric-stats-row">
               <div class="metric-stat-item">
@@ -2216,6 +2414,10 @@
             </div>
             <div class="screenshot-container">
               <img src="captura5.png" alt="Analíticas del Video 5" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 5</span>
+              </div>
             </div>
             <div class="metric-stats-row">
               <div class="metric-stat-item">
@@ -2244,6 +2446,10 @@
             </div>
             <div class="screenshot-container">
               <img src="captura6.png" alt="Analíticas del Video 6" onerror="this.style.display='none';">
+              <div class="screenshot-inner-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <span>Espacio para Captura de Analítica - Video 6</span>
+              </div>
             </div>
             <div class="metric-stats-row">
               <div class="metric-stat-item">
